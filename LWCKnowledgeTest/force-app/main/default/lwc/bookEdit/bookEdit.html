@@ -1,0 +1,24 @@
+<!-- app.html -->
+<template>
+    <input type="hidden" name="id" value={bookId} />
+    <input name="title" value={draftTitle} onchange={handleTitleChange} />
+
+    <button onclick={handleSave}>Save</button>
+    <button onclick={handleCancel}>Cancel</button>
+
+    <c-book-create onbookcreate={handleCreateBook}></c-book-create>
+
+    <c-book-list 
+        oneditbook={handleEditBook}
+        ondeletebook={handleDeleteBook}
+    ></c-book-list>
+
+
+    <template if:true={inEditMode}>
+        <c-book-edit
+            book-id={editBookId}
+            onsaveedit={handleSaveEdition}
+            oncanceledit={handleCancelEdition}
+        ></c-book-edit>
+    </template>
+</template>
